@@ -24,3 +24,8 @@ Feature: github login
     Given user is on github homepage
     When user clicks on Sign in button
     Then user is displayed login screen
+
+  Scenario: login with username and password
+    Given user is on github login page
+    #When user clicks on Sign in button on login page
+    #Then user is displayed login page

@@ -5,10 +5,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static java.lang.Thread.*;
 
 public class SeleniumFunctions {
 
@@ -25,7 +27,7 @@ public class SeleniumFunctions {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-		driver.get(baseURL);
+		//driver.get(baseURL);
 
 		waitVar = new WebDriverWait(driver, 15);
 	}
@@ -46,8 +48,32 @@ public class SeleniumFunctions {
 	}
 
 	public void isloginsectionDisplayed() {
+		WebElement name = driver.findElement(By.id("login_field"));
+		name.sendKeys("shajidissa");
+
+//		try {
+//			sleep(50000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+
 		waitVar.until(ExpectedConditions.presenceOfElementLocated(By.className("auth-form-body")));
 		waitVar.until(ExpectedConditions.presenceOfElementLocated(By.name("commit")));
+
+	}
+
+	public void sethomepage() {
+		driver.get(baseURL);
+	}
+
+	public void setloginpage() {
+		driver.get(baseURL+"login");
+	}
+
+	public void isloginpageDisplayed() {
+		//waitVar.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Sign in")));
+
+		//driver.findElement(By.linkText("Sign in")).isDisplayed();
 	}
 
 }

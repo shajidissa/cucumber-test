@@ -16,7 +16,16 @@ public class GithubLoginSD {
     public void user_is_on_github_homepage() throws MalformedURLException,
             InterruptedException {
         sf.createDriver();
+        sf.sethomepage();
         sf.ishomepageDisplayed();
+    }
+
+    @Given("^user is on github login page$")
+    public void user_i_on_github_login_page() throws MalformedURLException,
+            InterruptedException {
+        sf.createDriver();
+        sf.setloginpage();
+        sf.isloginpageDisplayed();
     }
 
     @When("^user clicks on Sign in button$")
